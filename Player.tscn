@@ -1,8 +1,49 @@
-[gd_scene load_steps=14 format=3 uid="uid://y2p24e2l8t6f"]
+[gd_scene load_steps=26 format=3 uid="uid://y2p24e2l8t6f"]
 
 [ext_resource type="Script" uid="uid://dwd3x0mqwkf1p" path="res://player.gd" id="1_kne1u"]
 [ext_resource type="Texture2D" uid="uid://6qawnfgo0dnw" path="res://New Piskel (13).png" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://qdq8vihqy1gu" path="res://New Piskel (11).png" id="1_xhfnw"]
+[ext_resource type="Texture2D" uid="uid://b4dx4pnhnu5ni" path="res://New Piskel (18).png" id="2_e80uo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp6x6"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tkgg"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6ohk"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oudfo"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6rpx"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3kul"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jatw7"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv870"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efikj"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itxgx"]
+atlas = ExtResource("2_e80uo")
+region = Rect2(0, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdg3f"]
 atlas = ExtResource("1_kpjcp")
@@ -36,12 +77,46 @@ region = Rect2(0, 256, 256, 256)
 atlas = ExtResource("1_xhfnw")
 region = Rect2(256, 256, 256, 256)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgsek"]
+atlas = ExtResource("1_kpjcp")
+region = Rect2(0, 0, 256, 256)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tdg3f"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp6x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tkgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6ohk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oudfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6rpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3kul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jatw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv870")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efikj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itxgx")
+}],
+"loop": false,
 "name": &"Change",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -77,25 +152,38 @@ animations = [{
 "name": &"Move Right",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgsek")
+}],
 "loop": true,
 "name": &"Normal",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kne1u"]
-radius = 43.14221
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e80uo"]
+radius = 3465772.0
+height = 12935568.0
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 script = ExtResource("1_kne1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(256, 252)
+position = Vector2(3, 6.3333282)
 sprite_frames = SubResource("SpriteFrames_tdg3f")
-animation = &"Move Right"
-frame_progress = 0.75355595
+animation = &"Change"
+frame = 9
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(270, 237.75)
-shape = SubResource("CircleShape2D_kne1u")
+position = Vector2(2.6666665, -14.666664)
+rotation = 1.5645876
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("CapsuleShape2D_e80uo")
+
+[node name="Carga" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Carga" to="." method="_on_carga_timeout"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0mqitesl77ix"]
+
+[ext_resource type="Texture2D" uid="uid://c3hg6qahcoajp" path="res://New Piskel (27).png" id="1_p4cqy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4cqy"]
+radius = 380.0
+height = 1140.383
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jgqv2"]
+radius = 2282.417
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="NewPiskel(27)" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(55.000237, -469.99973)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_p4cqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(45, 174.99982)
+rotation = 1.5490233
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("CapsuleShape2D_p4cqy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(15.000245, 10.000074)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("CircleShape2D_jgqv2")
