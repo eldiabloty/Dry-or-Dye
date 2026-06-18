@@ -1,9 +1,55 @@
-[gd_scene load_steps=26 format=3 uid="uid://y2p24e2l8t6f"]
+[gd_scene load_steps=33 format=3 uid="uid://y2p24e2l8t6f"]
 
 [ext_resource type="Script" uid="uid://dwd3x0mqwkf1p" path="res://player.gd" id="1_kne1u"]
 [ext_resource type="Texture2D" uid="uid://6qawnfgo0dnw" path="res://New Piskel (13).png" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://qdq8vihqy1gu" path="res://New Piskel (11).png" id="1_xhfnw"]
 [ext_resource type="Texture2D" uid="uid://b4dx4pnhnu5ni" path="res://New Piskel (18).png" id="2_e80uo"]
+[ext_resource type="Texture2D" uid="uid://cv4mkh4plka82" path="res://New Piskel (29).png" id="3_tdg3f"]
+[ext_resource type="Texture2D" uid="uid://blocm108l5g2d" path="res://New Piskel (28).png" id="6_dtqjt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pi4m"]
+atlas = ExtResource("3_tdg3f")
+region = Rect2(0, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg6sq"]
+atlas = ExtResource("3_tdg3f")
+region = Rect2(2048, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h84ma"]
+atlas = ExtResource("3_tdg3f")
+region = Rect2(0, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47wu6"]
+atlas = ExtResource("3_tdg3f")
+region = Rect2(2048, 2048, 2048, 2048)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2n1s8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pi4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg6sq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h84ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47wu6")
+}],
+"loop": true,
+"name": &"Move (Leo)",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dtqjt")
+}],
+"loop": true,
+"name": &"Normal (Leo)",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hp6x6"]
 atlas = ExtResource("2_e80uo")
@@ -132,7 +178,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_wi0c6")
 }],
 "loop": true,
-"name": &"Move Left",
+"name": &"Move Left (Hom)",
 "speed": 5.0
 }, {
 "frames": [{
@@ -149,7 +195,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cxr5p")
 }],
 "loop": true,
-"name": &"Move Right",
+"name": &"Move Right (Hom)",
 "speed": 5.0
 }, {
 "frames": [{
@@ -157,27 +203,31 @@ animations = [{
 "texture": SubResource("AtlasTexture_cgsek")
 }],
 "loop": true,
-"name": &"Normal",
+"name": &"Normal (Hom)",
 "speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e80uo"]
 radius = 3465772.0
-height = 12935568.0
+height = 10597726.0
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(1, 0)
 scale = Vector2(3, 3)
 script = ExtResource("1_kne1u")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, 6.3333282)
+[node name="Animacion Leo" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_2n1s8")
+animation = &"Move (Leo)"
+
+[node name="Animacion Homunculo" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.3333336, -1.333333)
 sprite_frames = SubResource("SpriteFrames_tdg3f")
-animation = &"Change"
-frame = 9
-frame_progress = 1.0
+animation = &"Move Left (Hom)"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.6666665, -14.666664)
+position = Vector2(3.5762787e-07, -8)
 rotation = 1.5645876
 scale = Vector2(1e-05, 1e-05)
 shape = SubResource("CapsuleShape2D_e80uo")
