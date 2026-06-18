@@ -212,7 +212,6 @@ radius = 3465772.0
 height = 10597726.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(1, 0)
 scale = Vector2(3, 3)
 script = ExtResource("1_kne1u")
 
@@ -236,4 +235,9 @@ shape = SubResource("CapsuleShape2D_e80uo")
 wait_time = 3.0
 one_shot = true
 
+[node name="Leo" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
 [connection signal="timeout" from="Carga" to="." method="_on_carga_timeout"]
+[connection signal="timeout" from="Leo" to="." method="_on_leo_timeout"]
